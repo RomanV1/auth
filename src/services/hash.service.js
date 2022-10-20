@@ -1,16 +1,15 @@
 import bcrypt from 'bcrypt';
-import { Connection } from "./connect.js";
+import { pool } from "./connect.js";
 
 export class HashService {
     async createHash(pwd) {
         return bcrypt.hash(pwd, 10);
     }
 
-    async checkHash(data) {
+    async checkHash(login, pwd) {
         try {
-            const pool = new Connection().connect();
-            const hash = await pool.query(`SELECT login, pwd FROM users WHERE login = '${data.login}'`);
-            return bcrypt.compare(data.password, hash[0][0].pwd);
+            const hash = await pool.query(`SELECT login, pwd FROM users WHERE login = '${login}'`);
+            return bcrypt.compare(pwd, hash[0][0].pwd);
         } catch (err) {
             return false
         }

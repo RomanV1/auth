@@ -16,10 +16,10 @@
         <form method="post">
             <h6 id="incorrect" style="display: none;">Login unavailable</h6>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-            <div class="form-group"><input class="form-control" id="login" name="login" required minlength="3" placeholder="Login" oninput=""></div>
+            <div class="form-group"><input class="form-control" id="login" name="login" required minlength="3" placeholder="Login" onchange="unique_login()" oninput=""></div>
             <div class="form-group"><input class="form-control" id="email" name="email" required type="email" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" id="password" type="password" required minlength="6" name="password" placeholder="Password"></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" onclick="unique_login()">Sign Up</button></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" onclick="">Sign Up</button></div>
 			<a href="/login" class="forgot">Have already an account? Sign In</a>
 		</form>
     </div>
