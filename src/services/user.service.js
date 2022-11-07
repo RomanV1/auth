@@ -18,11 +18,16 @@ export class UserService {
 
     async getUserByID(id) {
         const user = await pool.query(`SELECT id, login, email FROM users WHERE id = ${id}`);
-        return user[0].length == 0 ? 'User not found' : user[0];
+        return user[0].length == 0 ? {error: 'User not found'} : user[0];
     }
 
     async getUserByLogin(login) {
         const user = await pool.query(`SELECT id, login, email FROM users WHERE login = '${login}'`);
-        return user[0].length == 0 ? 'User not found' : user[0];
+        return user[0].length == 0 ? {error: 'User not found'} : user[0];
+    }
+
+    async getAdmin(login) {
+        const admin = await pool.query(`SELECT id, userId, login FROM admins WHERE login = '${login}'`);
+        return admin[0].length == 0 ? false : admin[0];
     }
 }

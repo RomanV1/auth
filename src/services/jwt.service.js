@@ -4,6 +4,6 @@ import jwt from 'jsonwebtoken';
 
 export class AccessToken {
     createToken(login, pwd) {
-        return jwt.sign({ login: login, password: pwd}, process.env.SECRET_KEY, { expiresIn: '24h' });
+        return jwt.sign({ login: login, password: pwd}, process.env.SECRET_KEY, { expiresIn: 60 * 30 });
     }
 }

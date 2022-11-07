@@ -7,8 +7,7 @@ class LoginController {
     
         if (await new HashService().checkHash(login, password)) {
             const token = new AccessToken().createToken(login, password);
-            res.set('Authorization', 'Bearer ' + token);
-            return res.redirect('/home');
+            return res.status(200).json({token: token});
         } else {
             return res.status(403).send('Incorrect login or password');
         }
